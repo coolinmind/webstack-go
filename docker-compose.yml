@@ -1,0 +1,15 @@
+services:
+  webstack-go:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - APP_CONF=config/prod.yml
+        - APP_RELATIVE_PATH=./cmd/server
+    image: webstack-go:latest
+    container_name: webstack-go
+    ports:
+      - "8000:8000"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
